@@ -1,0 +1,43 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+NextJS/node_modules
+NextJS/.pnp
+NextJS/.pnp.*
+NextJS/.yarn/*
+!NextJS/.yarn/patches
+!NextJS/.yarn/plugins
+!NextJS/.yarn/releases
+!NextJS/.yarn/versions
+
+# testing
+NextJS/coverage
+
+# next.js
+NextJS/.next/
+NextJS/out/
+
+# production
+NextJS/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+NextJS/npm-debug.log*
+NextJS/yarn-debug.log*
+NextJS/yarn-error.log*
+NextJS/.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+NextJS/.env*
+
+# vercel
+NextJS/.vercel
+
+# typescript
+NextJS/*.tsbuildinfo
+NextJS/next-env.d.ts
+
+/prisma/src/database/generated/prisma

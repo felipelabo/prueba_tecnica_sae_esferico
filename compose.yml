@@ -1,0 +1,32 @@
+services:
+  postgres_sae_tt:
+    image: postgis/postgis:18-3.6
+    environment:
+      POSTGRES_USER: postgis
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: esferico_sae_tt_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_sae_tt:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgis -d esferico_sae_tt_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nextjs_app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./NextJS:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
+    depends_on:
+      postgres_sae_tt:
+        condition: service_healthy
+
+volumes:
+  pgdata_sae_tt:

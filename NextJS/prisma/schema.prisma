@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider               = "prisma-client"
+  output                 = "../src/database/generated/prisma"
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
+  moduleFormat           = "cjs"
+  runtime                = "nodejs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Provincia {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  municipios Municipio[]
+}
+
+model Municipio {
+  id          Int       @id @default(autoincrement())
+  name        String
+  provincia   Provincia @relation(fields: [provinciaId], references: [id])
+  provinciaId Int
+  parcelas    Parcela[]
+}
+
+model Usuario {
+  id       Int       @id @default(autoincrement())
+  nombre   String
+  email    String    @unique
+  password String
+  parcelas Parcela[]
+}
+
+model Parcela {
+  id          Int                                    @id @default(autoincrement())
+  municipio   Municipio                              @relation(fields: [municipioId], references: [id])
+  geom        Unsupported("geometry(Polygon, 4326)")
+  usuario     Usuario                                @relation(fields: [usuarioId], references: [id])
+  usuarioId   Int
+  provinciaId Int
+  municipioId Int
+  @@index([geom], type: Gist)
+}
+
+model Recinto {
+  id           Int                                    @id @default(autoincrement())
+  nombre       String                                 @unique
+  cultivo      String
+  fechaSiembra DateTime
+  fechaCosecha DateTime?
+  geom         Unsupported("geometry(Polygon, 4326)")
+  @@index([geom], type: Gist)
+}
