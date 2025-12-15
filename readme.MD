@@ -10,6 +10,7 @@ Esta prueba técnica consiste en desarrollar una aplicación web con Next.js que
 
 - **Si no da tiempo a completar todo**, prioriza las tareas que consideres más importantes. Preferimos ver menos funcionalidades bien implementadas que muchas a medias.
 - **Puedes utilizar herramientas de IA** (ChatGPT, Copilot, Claude, etc.) sin ningún problema. Sin embargo, ten en cuenta que posteriormente se realizará una entrevista técnica en la que se preguntará sobre el código desarrollado, por lo que es importante que entiendas todo lo que has implementado.
+- **Se valorará el uso de Git**: la forma en que estructuras los commits (mensajes claros y descriptivos) y las ramas que creas. Puedes usar GitFlow, trunk-based development o cualquier estrategia de branching que consideres apropiada.
 
 ---
 
