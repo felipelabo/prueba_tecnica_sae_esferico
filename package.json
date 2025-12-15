@@ -11,7 +11,11 @@
     "prisma:migrate:dev": "dotenv -e .env.development -- prisma migrate dev",
     "prisma:migrate:test": "dotenv -e .env.test -- prisma migrate dev",
     "prisma:reset:dev": "dotenv -e .env.development -- prisma migrate reset",
-    "prisma:reset:test": "dotenv -e .env.test -- prisma migrate reset"
+    "prisma:reset:test": "dotenv -e .env.test -- prisma migrate reset",
+    "prisma:seed:dev": "dotenv -e .env.development -- prisma db seed",
+    "prisma:seed:test": "dotenv -e .env.test -- prisma db seed",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@next/env": "^16.0.8",
@@ -23,9 +27,10 @@
     "next": "16.0.7",
     "npm": "^11.6.4",
     "pg": "^8.16.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-leaflet": "^5.0.0-rc.2",
+    "sass": "^1.96.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
@@ -47,6 +52,7 @@
     "prisma": "^7.1.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
