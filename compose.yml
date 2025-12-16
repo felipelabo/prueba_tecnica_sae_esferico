@@ -1,23 +1,25 @@
 services:
   postgres_sae_tt:
     image: postgis/postgis:18-3.6
+    platform: linux/amd64
     environment:
       POSTGRES_USER: postgis
       POSTGRES_PASSWORD: password
       POSTGRES_DB: esferico_sae_tt_db
     ports:
-      - "5432:5432"
+      - "55432:5432"
     volumes:
       - pgdata_sae_tt:/var/lib/postgresql
 
   postgres_sae_tt_tests:
     image: postgis/postgis:18-3.6
+    platform: linux/amd64
     environment:
       POSTGRES_USER: postgis
       POSTGRES_PASSWORD: password
       POSTGRES_DB: esferico_sae_tt_tests_db
     ports:
-      - "5433:5432"
+      - "55433:5432"
     volumes:
       - pgdata_sae_tt_tests:/var/lib/postgresql
 
