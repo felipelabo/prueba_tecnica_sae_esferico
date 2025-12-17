@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+:root{
+    --color-bg: #f5f4f0;
+    --color-fg: #0f172a;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+
+    --color-primary: #89ac76;
+    --color-primary-dark: #586c4e;
+    --color-primary-light: #c9d7c4;
+
+    --color-secondary: #966ab8;
+    --color-secondary-dark: #6b4785;
+    --color-secondary-light: #b8a0ca;
+
+    /* Cultivos */
+    --cultivo-trigo: #d97706;
+    --cultivo-maiz: #f59e0b;
+    --cultivo-olivo: #166534;
+    --cultivo-tomate: #dc2626;
+    --cultivo-lechuga: #65a30d;
+    --cultivo-almendro: #a78bfa;
+}
+
+@theme {
+    --color-bg: #f5f4f0;
+    --color-fg: #0f172a;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+
+    --color-primary: #89ac76;
+    --color-primary-dark: #586c4e;
+    --color-primary-light: #c9d7c4;
+
+    --color-secondary: #966ab8;
+    --color-secondary-dark: #6b4785;
+    --color-secondary-light: #b8a0ca;
+
+    /* Cultivos */
+    --cultivo-trigo: #d97706;
+    --cultivo-maiz: #f59e0b;
+    --cultivo-olivo: #166534;
+    --cultivo-tomate: #dc2626;
+    --cultivo-lechuga: #65a30d;
+    --cultivo-almendro: #a78bfa;
+}
+
+html, body {
+    background-color: #f5f4f0;
+    color: var(--color-fg);
+}
