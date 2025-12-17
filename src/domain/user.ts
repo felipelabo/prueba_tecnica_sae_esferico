@@ -5,3 +5,8 @@ export interface Usuario {
     email:string,
     password?:string
 }
+
+export interface UsuarioDetalleSimple extends Usuario {
+  parcelasCount: number;
+  provincias: string[];
+}
