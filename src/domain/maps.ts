@@ -10,7 +10,7 @@ export interface Parcela {
     id: number,
     municipio: Territorio,
     provincia: Territorio,
-    coordenadas: string,
+    coordenadas: [number,number][],
     recintos?: Recinto[],
 };
 
@@ -19,5 +19,5 @@ export interface Recinto {
     cultivo: Cultivo,
     fechaSiembra: Date,
     fechaCosecha: Date,
-    coordenadas: string,
+    coordenadas: [number,number][],
 }

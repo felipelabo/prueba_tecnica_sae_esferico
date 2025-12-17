@@ -6,7 +6,6 @@ export const getUserWithMapsData = async (userId: number):Promise<UsuarioConParc
     const user = await getUserById(userId);
     const parcels = await getParcels(userId);
 
-    console.log('Parcels fetched:', parcels);
     return {
         ...user,
         parcelas: parcels

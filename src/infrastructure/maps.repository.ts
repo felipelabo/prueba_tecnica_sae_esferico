@@ -47,7 +47,7 @@ export const getParcels = async (id: number): Promise<Parcela[]> => {
             id: parcela.provincia_id,
             nombre: parcela.provincia_nombre
         },
-        coordenadas: parcela.geom_geojson,
+        coordenadas: JSON.parse(parcela.geom_geojson).coordinates[0],
         recintos: recintos
             .filter(r => r.parcelaId === parcela.id)
             .map(recinto => ({
@@ -58,7 +58,7 @@ export const getParcels = async (id: number): Promise<Parcela[]> => {
                 },
                 fechaSiembra: recinto.fechaSiembra,
                 fechaCosecha: recinto.fechaCosecha || new Date(),
-                coordenadas: recinto.geom_geojson
+                coordenadas: JSON.parse(recinto.geom_geojson).coordinates[0]
             }))
     }));
 };
