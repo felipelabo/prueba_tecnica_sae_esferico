@@ -1,3 +1,4 @@
+import { Parcela } from "./maps";
 
 export interface Usuario {
     id:number,
@@ -9,4 +10,8 @@ export interface Usuario {
 export interface UsuarioDetalleSimple extends Usuario {
   parcelasCount: number;
   provincias: string[];
+}
+
+export interface UsuarioConParcelas extends UsuarioDetalleSimple {
+  parcelas: Parcela[];
 }

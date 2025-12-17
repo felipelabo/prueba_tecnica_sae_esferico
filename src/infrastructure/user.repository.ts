@@ -26,8 +26,6 @@ export const getUsers = async (): Promise<UsuarioDetalleSimple[]> => {
         orderBy: { nombre: 'asc' }
     });
 
-  console.log('Usuarios obtenidos con detalles:', users);
-
   // Transformación de datos
     return users.map(user => ({
         id: user.id,
@@ -39,4 +37,45 @@ export const getUsers = async (): Promise<UsuarioDetalleSimple[]> => {
         user.parcelas.map(p => p.municipio.provincia.nombre)
         )]
     }));
+};
+
+export const getUserById = async (id: number): Promise<UsuarioDetalleSimple | null> => {
+
+    const userId = Number(id); //asegurando id como number
+
+    const user = await prisma.usuario.findUnique({
+        where: { id:userId },
+        select: {
+        id: true,
+        nombre: true,
+        email: true,
+        parcelas: {
+            select: {
+            id: true,
+            municipio: {
+                select: {
+                provincia: {
+                    select: {
+                    nombre: true
+                    }
+                }
+                }
+            }
+            }
+        }
+        }
+    });
+
+    if (!user) return null;
+
+    //Transofrmación de datos
+    return {
+        id: user.id,
+        nombre: user.nombre,
+        email: user.email,
+        parcelasCount: user.parcelas.length,
+        provincias: [...new Set(
+        user.parcelas.map(p => p.municipio.provincia.nombre)
+        )]
+    };
 };

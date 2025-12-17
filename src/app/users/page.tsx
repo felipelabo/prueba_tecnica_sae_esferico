@@ -1,10 +1,10 @@
 import type { UsuarioDetalleSimple } from "@/domain/user";
 import UserCard from "@/components/ui/UserCard";
-import { listUsers } from "@/application/listUsers";
+import { getUsersList } from "@/application/getUsersList";
 
 const UsersPage = async () => {
   
-  const usuarios:UsuarioDetalleSimple[] = await listUsers();
+  const usuarios:UsuarioDetalleSimple[] = await getUsersList();
 
   return (
     <main className="p-4 h-svh relative overflow-hidden">
