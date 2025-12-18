@@ -27,10 +27,10 @@ const UserCard = ({ id, nombre, email, parcelasCount, provincias }: UsuarioDetal
           <span className="text-sm text-primary-dark">{parcelasCount}</span>
         </div>
         <div>
-          {provincias.map((provincia, index) => (
+          {provincias.length > 0 && provincias.map((provincia, index) => (
             <span 
               key={index}
-              className="inline-block bg-primary-light text-primary-dark text-xs px-2 py-1 rounded-2xl mr-1"
+              className="inline-block text-primary text-lg"
             >
               {provincia}
             </span>

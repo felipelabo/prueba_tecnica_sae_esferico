@@ -1,10 +1,26 @@
+"use client";
 import type { Parcela } from "@/domain/maps";
 import {LandPlot} from 'lucide-react';
 import EnclosureCard from "./EnclosureCard";
+import { useParcela, useIsParcelaSelected } from "@/context/ParcelaContext";
 
 const FieldCard = ({id,municipio,provincia,recintos}:Parcela) => {
+    const { selectParcela, clearSelection } = useParcela();
+    const isSelected = useIsParcelaSelected(id);
+
+    const handleClick = () => {
+        if (isSelected) {
+            clearSelection();
+        } else {
+            selectParcela(id);
+        }
+    };
+
     return (
-        <div className="z-50 grid grid-cols-2 gap-2 cursor-pointer rounded-lg border border-primary-light bg-white p-4 shadow-sm  transition-shadow group">
+        <div 
+            onClick={handleClick}
+            className={`z-50 grid grid-cols-2 gap-2 cursor-pointer rounded-lg border p-4 shadow-sm transition-all group hover:shadow-md border-primary-light bg-white hover:border-primary`}
+        >
 
             <div className="flex flex-col justify-between">
                 <div className="flex items-center gap-2 mb-8">

@@ -7,12 +7,14 @@ const EnclosureCard = ({id,cultivo,fechaSiembra,fechaCosecha}:Recinto) => {
         style={{
             backgroundColor: `var(--color-cultivo-${cultivo.nombre.toLowerCase()})`
         }}
-    >
-        <p className="text-sm font-medium text-white">Recinto {id}</p>
-        <p className="text-xs text-white flex items-center gap-1">
+    >   
+        <p className="text-sm text-white font-bold flex items-center gap-1">
             <span>
                 <Sprout size={12} />
-            </span>{cultivo.nombre}</p>
+            </span>
+            {cultivo.nombre}
+        </p>
+        <p className="text-xs text-white">Recinto {id}</p>
     </div>
 }
 
