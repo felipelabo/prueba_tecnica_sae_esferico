@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {getUserWithMapsData} from "@/application/getUserWithMapsData";
 import DynamicMap from "@/components/ui/DynamicMap";
-import { ArrowLeft, Mail, LandPlot } from 'lucide-react';
+import { ArrowLeft, Mail, LandPlot, Sprout } from 'lucide-react';
 import FieldCard from "@/components/ui/FieldCard";
 
 const UserIdPage = async({ params }: { params: { id: number } }) => {
@@ -28,12 +28,16 @@ const UserIdPage = async({ params }: { params: { id: number } }) => {
                     <div className=" bg-white p-4 rounded-lg shadow-md border border-primary-light">
                         <h2 className="text-xl font-semibold text-primary-dark mb-4">Detalles del Usuario</h2>
                         <p className="flex gap-1 items-center text-muted"><Mail size={18}/> {user?.email}</p>
-                        <p className="flex gap-1 items-center text-muted"><LandPlot size={18}/> {user?.parcelasCount}</p>
+                        <div className="flex gap-2 mt-2">
+                            <p className="flex gap-1 items-center text-muted"><LandPlot size={18}/> {user?.parcelasCount}</p>
+                            <p className="flex gap-1 items-center text-muted"><Sprout size={18}/> {user?.recintosCount}</p>
+                        </div>
+                        
                     </div>
 
                     <div className="flex flex-col bg-white p-4 rounded-lg shadow-md border border-primary-light">
                         <h2 className="text-xl font-semibold text-primary-dark mb-4">Parcelas</h2>
-                        <div className="flex-1" >
+                        <div className="flex-1 max-h-svh overflow-scroll" >
                                 {user?.parcelas && user.parcelas.length > 0 ? (
                                     <div className="flex flex-col gap-4">
                                         {user.parcelas.map((parcela) => (

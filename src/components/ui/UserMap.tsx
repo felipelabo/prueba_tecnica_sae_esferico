@@ -12,7 +12,7 @@ const MapBoundsController = ({ parcelas }: { parcelas: Parcela[] }) => {
   const selectedParcelaId = useSelectedParcelaId();
 
   useEffect(() => {
-    console.log("Selected Parcela ID changed:", selectedParcelaId);
+    
     if (selectedParcelaId) {
       const selectedParcela = parcelas.find(p => p.id === selectedParcelaId);
       if (selectedParcela && selectedParcela.coordenadas.length > 0) {
@@ -56,8 +56,8 @@ const UserMap = ({parcelas}:{parcelas:Parcela[]}) => {
                       style={{color:`var(--color-cultivo-${recinto.cultivo.nombre.toLowerCase()})`}}
                     ><span><Sprout size={18} /></span>{recinto.cultivo.nombre}</h3>
                     <h5 className=" mb-2">Recinto {recinto.id}</h5>
-                    <p><span className="font-semibold">Fecha Siembra:</span> {new Date(recinto.fechaSiembra).toLocaleDateString()}</p>
-                    <p><span className="font-semibold">Fecha Cosecha:</span> {recinto.fechaCosecha ? new Date(recinto.fechaCosecha).toLocaleDateString() : 'N/A'}</p>
+                    <p style={{marginBottom:5}}><span className="font-semibold">Fecha Siembra:</span> {new Date(recinto.fechaSiembra).toLocaleDateString()}</p>
+                    <p style={{marginTop:5}}><span className="font-semibold">Fecha Cosecha:</span> {recinto.fechaCosecha ? new Date(recinto.fechaCosecha).toLocaleDateString() : 'N/A'}</p>
                   </div>
                 </Popup>
               </FeatureGroup>

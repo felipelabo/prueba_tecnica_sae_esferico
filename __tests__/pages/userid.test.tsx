@@ -314,9 +314,9 @@ describe('UserIdPage', () => {
         const parcelasSection = screen.getByText('Parcelas').closest('div');
         
         //Buscar elementos que representen las parcelas en el sidebar
-        const parcela1Card = within(parcelasSection!).getByText('1');
-        const parcela2Card = within(parcelasSection!).getByText('2');
-        const parcela3Card = within(parcelasSection!).getByText('3');
+        const parcela1Card = within(parcelasSection!).getByText('N°1');
+        const parcela2Card = within(parcelasSection!).getByText('N°2');
+        const parcela3Card = within(parcelasSection!).getByText('N°3');
         
         expect(parcela1Card).toBeInTheDocument();
         expect(parcela2Card).toBeInTheDocument();

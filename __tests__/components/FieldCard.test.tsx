@@ -68,12 +68,12 @@ describe('FieldCard Component', () => {
         render(<FieldCard {...mockParcelaWithRecintos} />);
 
         //Verificamos información básica de la parcela
-        expect(screen.getByText('1')).toBeInTheDocument(); 
+        expect(screen.getByText('N°1')).toBeInTheDocument(); 
         expect(screen.getByText('Murcia')).toBeInTheDocument();
         expect(screen.getByText('Cartagena')).toBeInTheDocument();
         
         //Verificamos que el icono de parcela está presente
-        const cardElement = screen.getByText('1').closest('div');
+        const cardElement = screen.getByText('N°1').closest('div');
         const landPlotIcon = cardElement?.querySelector('svg');
         expect(landPlotIcon).toBeInTheDocument();
     });
@@ -98,7 +98,7 @@ describe('FieldCard Component', () => {
         render(<FieldCard {...mockParcelaSinRecintos} />);
 
         //Verificamos información básica sigue apareciendo
-        expect(screen.getByText('2')).toBeInTheDocument();
+        expect(screen.getByText('N°2')).toBeInTheDocument();
         expect(screen.getByText('Lorca')).toBeInTheDocument();
 
         //Verificamos mensaje cuando no hay recintos
@@ -125,7 +125,7 @@ describe('FieldCard Component', () => {
 
         render(<FieldCard {...mockParcelaWithRecintos} />);
 
-        const cardElement = screen.getByText('1').closest('div');
+        const cardElement = screen.getByText('N°1').closest('div');
         fireEvent.click(cardElement!);
 
         //Verificamos que se intenta seleccionar la parcela

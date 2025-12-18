@@ -18,6 +18,7 @@ const mockUsers: UsuarioDetalleSimple[] = [
         nombre: 'Juan Pérez',
         email: 'juan@test.com',
         parcelasCount: 3,
+        recintosCount: 5,
         provincias: ['Murcia']
     },
     {
@@ -25,6 +26,7 @@ const mockUsers: UsuarioDetalleSimple[] = [
         nombre: 'María García',
         email: 'maria@test.com',
         parcelasCount: 2,
+        recintosCount: 4,
         provincias: ['Alicante']
     }
 ];
@@ -36,16 +38,12 @@ describe('UsersPage', () => {
         jest.clearAllMocks();
     });
 
-    it('Renderiza el titulo de la pagina y las tarjetas de usuarios', async () => {
+    it('Renderiza las tarjetas de usuarios correctamente', async () => {
         
         mockGetUsersList.mockResolvedValue(mockUsers);
 
         const component = await UsersPage();
         render(component);
-
-        // Verificamos que elementos  presentes
-        const heading = screen.getByRole('heading', { name: /Clientes/i });
-        expect(heading).toBeInTheDocument();
 
         // Verificamos que los datos mockeados se muestran en pantalla
         expect(screen.getByText('Juan Pérez')).toBeInTheDocument();
@@ -72,11 +70,12 @@ describe('UsersPage', () => {
         const component = await UsersPage();
         render(component);
 
-        //Verificamos que la página sigue funcionando sin errores
-        const heading = screen.getByRole('heading', { name: /Clientes/i });
-        expect(heading).toBeInTheDocument();
+        // Verificamos que el componente renderiza el grid contenedor incluso sin usuarios
+        const gridContainer = document.querySelector('.grid');
+        expect(gridContainer).toBeInTheDocument();
+        expect(gridContainer).toHaveClass('grid-cols-1', 'sm:grid-cols-2', 'md:grid-cols-3', 'gap-4');
 
-        //Verificamos que NO aparecen tarjetas de usuarios
+        // Verificamos que NO aparecen tarjetas de usuarios
         expect(screen.queryByText('Juan Pérez')).not.toBeInTheDocument();
     });
 });

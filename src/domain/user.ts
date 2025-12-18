@@ -9,6 +9,7 @@ export interface Usuario {
 
 export interface UsuarioDetalleSimple extends Usuario {
   parcelasCount: number;
+  recintosCount: number;
   provincias: string[];
 }
 

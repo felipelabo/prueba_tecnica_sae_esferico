@@ -19,15 +19,15 @@ const FieldCard = ({id,municipio,provincia,recintos}:Parcela) => {
     return (
         <div 
             onClick={handleClick}
-            className={`z-50 grid grid-cols-2 gap-2 cursor-pointer rounded-lg border p-4 shadow-sm transition-all group hover:shadow-md border-primary-light bg-white hover:border-primary`}
+            className={`z-50 grid grid-cols-2 gap-2 cursor-pointer rounded-lg border p-4 shadow-sm transition-all group hover:shadow-md border-primary-light bg-primary-light hover:border-primary`}
         >
 
             <div className="flex flex-col justify-between">
                 <div className="flex items-center gap-2 mb-8">
                     {/*<User size={22} className="text-primary-dark" />*/}
                     <div className="flex items-center gap-1 text-primary-dark">
-                        <LandPlot size={26} />
-                        <h3 className="text-3xl font-semibold ">{id}</h3>
+                        <LandPlot size={24} />
+                        <h3 className="text-xl font-semibold ">N°{id}</h3>
                     </div>
                 </div>
 

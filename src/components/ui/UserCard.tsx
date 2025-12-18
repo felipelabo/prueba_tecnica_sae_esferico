@@ -1,13 +1,13 @@
 "use client";
 import type { UsuarioDetalleSimple } from '@/domain/user';
-import { User, Mail, ArrowRight, LandPlot } from 'lucide-react';
+import { ArrowRight, LandPlot, Sprout } from 'lucide-react';
 import { redirect } from 'next/navigation';
 
-const UserCard = ({ id, nombre, email, parcelasCount, provincias }: UsuarioDetalleSimple) => {
+const UserCard = ({ id, nombre, email, parcelasCount, recintosCount, provincias }: UsuarioDetalleSimple) => {
   return (
     <div 
       onClick={() => redirect(`/user/${id}`)} 
-      className="z-50 cursor-pointer rounded-lg border border-primary-light bg-white p-4 shadow-sm hover:shadow-md transition-shadow group"
+      className="z-50 flex flex-col cursor-pointer rounded-lg border border-primary-light hover:border-primary-light bg-white p-4 shadow-sm hover:shadow-md transition-shadow group"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -21,20 +21,29 @@ const UserCard = ({ id, nombre, email, parcelasCount, provincias }: UsuarioDetal
         <p className="text-sm text-muted">{email}</p>
       </div>
 
-      <div className="flex justify-between gap-2 mt-8">
-        <div className='flex items-center gap-2'>
-          <LandPlot size={16} className="text-primary-dark" />
-          <span className="text-sm text-primary-dark">{parcelasCount}</span>
+      <div className="flex-1 grid grid-cols-2 justify-between gap-2 mt-8">
+        <div className='flex items-end gap-2'>
+          <LandPlot size={18} className="text-primary-dark" />
+          <span className="text-md text-primary-dark">{parcelasCount}</span>
+          <Sprout size={18} className="text-primary-dark" />
+          <span className="text-md text-muted">{recintosCount}</span>
         </div>
-        <div>
-          {provincias.length > 0 && provincias.map((provincia, index) => (
+        <div className="flex items-end flex-wrap gap-1 justify-end">
+          {provincias.length > 0 && provincias.length <= 5 && provincias.map((provincia, index) => (
             <span 
               key={index}
-              className="inline-block text-primary text-lg"
+              className="h-fit text-muted text-sm px-2 py-1 bg-primary-light rounded-2xl"
             >
               {provincia}
             </span>
           ))}
+          {provincias.length > 5 && 
+            <span 
+              className="h-fit text-muted text-sm px-2 py-1 bg-primary-light rounded-2xl"
+            >
+              +5 Provincias
+            </span>
+          }
         </div>
         
       </div>
